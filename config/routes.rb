@@ -1,5 +1,12 @@
 Rails.application.routes.draw do
 
+  # question
+  get '/questions', to: "questions#index"
+  post '/questions', to: "questions#create"
+  get '/questions/:id', to: "questions#show"
+  put '/questions/:id', to: "questions#update"
+  delete '/questions/:id', to: "questions#delete"
+
   # User Route
   get '/users', to: "users#index"
   post '/users', to: "users#create"
