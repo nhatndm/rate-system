@@ -12,12 +12,19 @@ class AnswersController < ApplicationController
       v[:id]
     end
 
-    user = User.find_by!(email: params[:email])
+    user = User.find_by(email: params[:email])
+
+    if !user
+      @newUser = User.new(email: params[:email])
+      @newUser.save
+    else 
+      @newUser = user
+    end
 
     Question.find(questions_ids)
 
     params[:questions].each do |v|
-      Answer.create!(user_id: user[:id], question_id: v[:id], content: v[:answer])
+      Answer.create!(user_id: @newUser[:id], question_id: v[:id], content: v[:answer])
     end
 
     render json: {} , status: 200
