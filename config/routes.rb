@@ -1,5 +1,10 @@
 Rails.application.routes.draw do
 
+  # answer
+  get '/answers', to: "answers#index"
+  post '/answers', to: "answers#create"
+  get '/answers/:id', to: "answers#show"
+
   # question
   get '/questions', to: "questions#index"
   post '/questions', to: "questions#create"
