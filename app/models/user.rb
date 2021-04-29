@@ -3,4 +3,5 @@ class User < ApplicationRecord
   validates_format_of :email, :with => /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i, :on => [:create, :update]
 
   has_many :answers
+  has_many :rates
 end

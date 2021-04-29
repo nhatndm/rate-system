@@ -1,5 +1,11 @@
 Rails.application.routes.draw do
 
+  # rates
+  get '/rates', to: "rates#index"
+  post '/rates/add_point', to: "rates#add_rate"
+  put '/rates/:id', to: "rates#update"
+  get '/rates/report', to: "rates#report"
+
   # answer
   get '/answers', to: "answers#index"
   post '/answers', to: "answers#create"
