@@ -31,9 +31,16 @@ class RatesController < ApplicationController
   end
 
   def update
-    user = User.find_by!(email: params[:email])
+    user = User.find_by(email: params[:email])
 
-    @rate.update!(user_id: user[:id])
+    if !user
+      @newUser = User.new(email: params[:email])
+      @newUser.save
+    else 
+      @newUser = user
+    end
+    
+    @rate.update!(user_id: @newUser[:id])
 
     render json: @rate, status: 200
 
